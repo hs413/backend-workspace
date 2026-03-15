@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dataportal
+    username: root
+    password:
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      connection-timeout: 10000
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  devtools:
+    livereload:
+      enabled: false
+    remote:
+      restart:
+        enabled: false
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: info
+    org:
+      springframework: debug
+      quartz: DEBUG
+    in:
+      woowa:
+        data:
+          portal: debug
+  pattern:
+    file: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+
