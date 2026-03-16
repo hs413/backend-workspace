@@ -1,0 +1,42 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hs.wdp.meta.mapper.MetaMapper">
+  <select id="selectCount">
+    select count(*) from dh_meta_schema
+  </select>
+
+  <insert id="insert">
+    insert into dh_meta_schema (project_id,
+                             schema_id,
+                             dh_dscr,
+                             ww_dscr,
+                             datahub_layer,
+                             dh_env,
+                             timezone,
+                             use_yn,
+                             del_yn,
+                             dh_rgst_dt,
+                             dh_modi_dt,
+                             rgst_id,
+                             rgst_dt,
+                             modi_id,
+                             modi_dt)
+    values (#{projectId},
+            #{schemaId},
+            #{dhDscr},
+            #{wwDscr},
+            #{datahubLayer},
+            #{dhEnv},
+            #{timezone},
+            #{useYn},
+            #{delYn},
+            CURRENT_TIMESTAMP,
+            CURRENT_TIMESTAMP,
+            #{rgstId},
+            CURRENT_TIMESTAMP,
+            #{modiId},
+            CURRENT_TIMESTAMP)
+  </insert>
+
+
+</mapper>
