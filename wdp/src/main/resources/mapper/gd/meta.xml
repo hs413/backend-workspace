@@ -1,12 +1,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hs.wdp.meta.mapper.MetaMapper">
-  <select id="selectCount">
-    select count(*) from dh_meta_schema
+<mapper namespace="hs.wdp.gd.meta.mapper.MetaMapper">
+  <select id="selectCount" resultType="int">
+    select count(*) from dataportal.dh_meta_schema
   </select>
 
   <insert id="insert">
-    insert into dh_meta_schema (project_id,
+    insert into dataportal.dh_meta_schema (project_id,
                              schema_id,
                              dh_dscr,
                              ww_dscr,
