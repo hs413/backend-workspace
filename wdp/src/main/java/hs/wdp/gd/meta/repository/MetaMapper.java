@@ -1,4 +1,4 @@
-package hs.wdp.gd.meta.mapper;
+package hs.wdp.gd.meta.repository;
 
 import org.apache.ibatis.annotations.Mapper;
 

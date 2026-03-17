@@ -1,6 +1,6 @@
 package hs.wdp.gd.meta.service;
 
-import hs.wdp.gd.meta.mapper.MetaMapper;
+import hs.wdp.gd.meta.repository.MetaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
