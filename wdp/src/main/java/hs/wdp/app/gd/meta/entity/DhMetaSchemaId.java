@@ -1,4 +1,4 @@
-package hs.wdp.gd.meta.entity;
+package hs.wdp.app.gd.meta.entity;
 
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;

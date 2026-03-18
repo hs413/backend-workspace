@@ -1,14 +1,14 @@
-package hs.wdp.gd.meta.service;
+package hs.wdp.app.gd.meta.service;
 
-import hs.wdp.gd.meta.repository.MetaMapper;
+import hs.wdp.app.gd.meta.mapper.DhMetaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MetaService {
+public class DhMetaService {
 
-    private final MetaMapper metaMapper;
+    private final DhMetaMapper metaMapper;
 
     public int selectCount() {
         return metaMapper.selectCount();

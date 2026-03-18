@@ -1,16 +1,14 @@
-package hs.wdp.gd.meta.entity;
+package hs.wdp.app.gd.meta.entity;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
+import lombok.Builder;
 
 /**
- * JPA 용
+ * MyBatis 용
  * */
-@Entity
-public class DhMetaSchema {
-    @EmbeddedId
-    private DhMetaSchemaId id;
-
+@Builder
+public class DhMetaSchemaModel {
+    private String projectId;
+    private String schemaId;
     private String dhDscr;
     private String wwDscr;
     private String dhLayer;
