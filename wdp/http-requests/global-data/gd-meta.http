@@ -1,3 +1,7 @@
+@projectId=fulfillment-dwh-production
+@schemaId=curated_data_shared_data_stream
+
 ###
-GET {{base_url}}/meta/count
+GET {{base_url}}/meta/schema?projectId={{projectId}}&schemaId={{schemaId}}
+
 

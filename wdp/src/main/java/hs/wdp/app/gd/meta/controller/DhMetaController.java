@@ -1,7 +1,9 @@
 package hs.wdp.app.gd.meta.controller;
 
 
-import hs.wdp.app.gd.meta.service.DhMetaService;
+import hs.wdp.app.gd.meta.dto.DhMetaDto;
+import hs.wdp.app.gd.meta.model.DhMetaSchemaModel;
+import hs.wdp.app.gd.meta.service.DhMetaSchemaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class DhMetaController {
 
-    private final DhMetaService metaService;
+    private final DhMetaSchemaService schemaService;
 
-    @RequestMapping("/meta/count")
-    public int selectCount() {
-        return metaService.selectCount();
+    @RequestMapping("/meta/schema")
+    public DhMetaSchemaModel selectSchema(DhMetaDto dto) {
+        return schemaService.selectSchemaById(dto);
     }
 
 }

@@ -1,42 +1,92 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hs.wdp.app.gd.meta.mapper.DhMetaMapper">
-  <select id="selectCount" resultType="int">
-    select count(*) from dataportal.dh_meta_schema
-  </select>
-
-  <insert id="insert">
-    insert into dataportal.dh_meta_schema (project_id,
-                             schema_id,
-                             dh_dscr,
-                             ww_dscr,
-                             datahub_layer,
-                             dh_env,
-                             timezone,
-                             use_yn,
-                             del_yn,
-                             dh_rgst_dt,
-                             dh_modi_dt,
-                             rgst_id,
-                             rgst_dt,
-                             modi_id,
-                             modi_dt)
-    values (#{projectId},
-            #{schemaId},
-            #{dhDscr},
-            #{wwDscr},
-            #{datahubLayer},
-            #{dhEnv},
-            #{timezone},
-            #{useYn},
-            #{delYn},
-            CURRENT_TIMESTAMP,
-            CURRENT_TIMESTAMP,
-            #{rgstId},
-            CURRENT_TIMESTAMP,
-            #{modiId},
-            CURRENT_TIMESTAMP)
+<mapper namespace="hs.wdp.app.gd.meta.mapper.DhMetaSchemaMapper">
+  <insert id="upsertSchemas" parameterType="java.util.List">
+    INSERT INTO dataportal.dh_meta_schema (
+    project_id, schema_id, dh_dscr, datahub_layer, dh_env, timezone,
+    use_yn, del_yn, dh_rgst_dt, dh_modi_dt, rgst_id, rgst_dt, modi_id, modi_dt
+    ) VALUES
+    <foreach collection="list" item="item" separator=",">
+      (
+      #{item.projectId}, #{item.schemaId}, #{item.dhDscr}, #{item.datahubLayer}, #{item.dhEnv}, #{item.timezone},
+      #{item.useYn}, #{item.delYn}, #{item.dhRgstDt}, #{item.dhModiDt}, #{item.rgstId}, #{item.rgstDt}, #{item.modiId}, #{item.modiDt}
+      )
+    </foreach>
+    ON CONFLICT (project_id, schema_id)
+    DO UPDATE SET
+    dh_dscr       = EXCLUDED.dh_dscr,
+    datahub_layer = EXCLUDED.datahub_layer,
+    dh_env        = EXCLUDED.dh_env,
+    timezone      = EXCLUDED.timezone,
+    dh_rgst_dt    = EXCLUDED.dh_rgst_dt,
+    dh_modi_dt    = EXCLUDED.dh_modi_dt,
+    modi_id       = EXCLUDED.modi_id,
+    modi_dt       = EXCLUDED.modi_dt
   </insert>
 
+  <select id="selectSchemaIds" resultType="hs.wdp.app.gd.meta.dto.DhMetaSchemaDto$Result">
+    SELECT
+    project_id,
+    schema_id
+    FROM
+    dataportal.dh_meta_schema
+    WHERE del_yn = 'N'
+    and project_id = #{projectId}
+    <if test="!manager">
+      and use_yn = 'Y'
+    </if>
+    order by schema_id
+  </select>
+
+  <select id="selectSchemas" resultType="hs.wdp.app.gd.meta.model.DhMetaSchemaModel">
+    SELECT
+    *
+    FROM
+    dataportal.dh_meta_schema
+    WHERE del_yn = 'N'
+    and project_id = #{projectId}
+    <if test="!manager">
+      and use_yn = 'Y'
+    </if>
+    order by schema_id
+  </select>
+
+  <select id="selectSchemaById" resultType="hs.wdp.app.gd.meta.model.DhMetaSchemaModel">
+    SELECT
+      *
+    FROM
+      dataportal.dh_meta_schema
+    WHERE del_yn = 'N'
+      and project_id = #{projectId}
+      and schema_id = #{schemaId}
+  </select>
+
+  <update id="updateSchemaList">
+    <foreach collection="list" item="item" separator=";">
+      UPDATE
+      dataportal.dh_meta_schema
+      SET
+      use_yn = #{item.useYn},
+      ww_dscr = #{item.wwDscr},
+      modi_id = #{modiId},
+      modi_dt = NOW()
+      WHERE del_yn = 'N'
+      AND project_id = #{item.projectId}
+      AND schema_id = #{item.schemaId}
+    </foreach>
+  </update>
+
+  <update id="updateSchema" >
+    UPDATE
+      dataportal.dh_meta_schema
+    SET
+      use_yn = #{useYn},
+      ww_dscr = #{wwDscr},
+      modi_id = #{modiId},
+      modi_dt = NOW()
+    WHERE del_yn = 'N'
+      AND project_id = #{projectId}
+      AND schema_id = #{schemaId}
+  </update>
 
 </mapper>

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class DhMetaService {
 
-    private final DhMetaMapper metaMapper;
+//    private final DhMetaMapper metaMapper;
 
-    public int selectCount() {
-        return metaMapper.selectCount();
-    }
+//    public int selectCount() {
+//        return metaMapper.selectCount();
+//    }
 
 //    public void insertMetaSchema(MetaSchema metaSchema) {
 //        metaMapper.insert(metaSchema);

@@ -6,7 +6,7 @@ import lombok.Builder;
  * MyBatis 용
  * */
 @Builder
-public class DhMetaSchemaModel {
+public class DhMetaSchemaEntity {
     private String projectId;
     private String schemaId;
     private String dhDscr;

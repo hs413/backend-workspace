@@ -6,5 +6,5 @@ import hs.wdp.app.gd.meta.entity.DhMetaSchema;
 import hs.wdp.app.gd.meta.entity.DhMetaSchemaId;
 
 public interface DhMetaSchemaRepository extends JpaRepository<DhMetaSchema, DhMetaSchemaId> {
-    List<DhMetaSchema> findAllByProjectId(String projectId);
+    List<DhMetaSchema> findAllById(DhMetaSchemaId Id);
 }
