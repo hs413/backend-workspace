@@ -1,7 +1,10 @@
 @projectId=fulfillment-dwh-production
 @schemaId=curated_data_shared_data_stream
 
-###
+### mybatis
 GET {{base_url}}/meta/schema?projectId={{projectId}}&schemaId={{schemaId}}
 
+
+### jpa
+GET {{base_url}}/meta/schema-jpa?projectId={{projectId}}&schemaId={{schemaId}}
 
