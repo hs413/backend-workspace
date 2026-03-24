@@ -40,5 +40,13 @@ public class DhMetaSchema extends BaseEntity {
     @Column(name = "dh_modi_dt")
     private String dhModiDt;
 
+    @Column(name = "use_yn")
+    private String useYn;
 
+
+    public void updateInfo(String useYn, String wwDscr, String modiId) {
+        this.wwDscr = wwDscr;
+        this.dhModiDt = modiId;
+        this.useYn = useYn;
+    }
 }
