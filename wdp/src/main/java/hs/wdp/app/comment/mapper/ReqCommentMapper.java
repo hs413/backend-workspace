@@ -6,12 +6,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 
-/**
- * ReqComment Mapper
- *
- * @date 2025. 12. 03.
- * @author Clush
- */
 @Mapper
 public interface ReqCommentMapper {
 
