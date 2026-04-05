@@ -1,4 +1,4 @@
-package in.woowa.data.portal.common.mapper;
+package hs.wdp.app.req.mapper;
 
 import in.woowa.data.portal.app.core.dw.stdterm.model.StdTermModel;
 import in.woowa.data.portal.app.core.dw.stdword.model.StdWordModel;
@@ -8,10 +8,9 @@ import in.woowa.data.portal.common.dto.ColInfoDto;
 import in.woowa.data.portal.common.dto.DpReqDto;
 import in.woowa.data.portal.common.dto.DpReqStatsDto;
 import in.woowa.data.portal.common.dto.TblFixDto;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 
 /**
