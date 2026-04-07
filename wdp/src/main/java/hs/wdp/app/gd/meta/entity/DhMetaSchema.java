@@ -1,5 +1,6 @@
 package hs.wdp.app.gd.meta.entity;
 
+import hs.wdp.common.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;

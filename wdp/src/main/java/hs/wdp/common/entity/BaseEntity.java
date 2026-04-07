@@ -1,4 +1,4 @@
-package hs.wdp.app.gd.meta.entity;
+package hs.wdp.common.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
