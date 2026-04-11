@@ -1,6 +1,5 @@
 package hs.wdp.app.req.model;
 
-import in.woowa.data.portal.common.dto.BaseDto;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(callSuper=false)
-public class DpReqModel extends BaseDto {
+public class DpReqModel {
 
     /* 현황(관리자) 여부 */
     private String mngrYn = "N";
